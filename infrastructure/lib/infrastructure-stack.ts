@@ -32,9 +32,9 @@ export class InfrastructureStack extends cdk.Stack {
 
         amplifyApp.grantPrincipal.addToPrincipalPolicy(new iam.PolicyStatement({
             resources: [
-                "cloudfront:*",
-                "s3:*",
-                "lambda:*"
+                "arn:aws:cloudfront::*:*/*",
+                "arn:aws:s3:::*/*",
+                "arn:aws:lambda:*:*:*:*",
             ],
             actions: ['*'],
         }))
