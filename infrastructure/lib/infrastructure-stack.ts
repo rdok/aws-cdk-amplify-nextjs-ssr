@@ -1,6 +1,8 @@
 import * as cdk from "@aws-cdk/core";
 import * as codecommit from "@aws-cdk/aws-codecommit";
 import * as amplify from "@aws-cdk/aws-amplify";
+import * as codebuild from '@aws-cdk/aws-codebuild';
+import buildSpec from './build-spec'
 
 export class InfrastructureStack extends cdk.Stack {
    name = 'next-js-with-ssr'
@@ -19,7 +21,10 @@ export class InfrastructureStack extends cdk.Stack {
         const amplifyApp = new amplify.App(
             this,
             this.name,
-            {sourceCodeProvider: new amplify.CodeCommitSourceCodeProvider({repository: repository}),}
+            {
+                sourceCodeProvider: new amplify.CodeCommitSourceCodeProvider({repository: repository}),
+                buildSpec: codebuild.BuildSpec.fromObjectToYaml(buildSpec)
+            }
         );
         amplifyApp.addBranch("main");
     }
