@@ -2,6 +2,7 @@ import * as cdk from "@aws-cdk/core";
 import * as codecommit from "@aws-cdk/aws-codecommit";
 import * as amplify from "@aws-cdk/aws-amplify";
 import * as codebuild from '@aws-cdk/aws-codebuild';
+import * as iam from '@aws-cdk/aws-iam';
 import buildSpec from './build-spec'
 
 export class InfrastructureStack extends cdk.Stack {
