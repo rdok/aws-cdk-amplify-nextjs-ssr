@@ -16,7 +16,7 @@ export class  InfrastructureStack extends cdk.Stack {
         }
     );
 
-    const amplifyApp = new amplify.App(this, "sample-react-app ", {
+    const amplifyApp = new amplify.App(this, "next-jsr-ssr-aws-amplify", {
       sourceCodeProvider: new amplify.CodeCommitSourceCodeProvider({
         repository: repository,
       }),

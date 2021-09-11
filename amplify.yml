@@ -15,4 +15,4 @@ applications:
       cache:
         paths:
           - node_modules/**/*
-    appRoot: dynamic-routing
+#    appRoot: dynamic-routing
