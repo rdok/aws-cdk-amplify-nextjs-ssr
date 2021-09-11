@@ -5,6 +5,7 @@ import * as codebuild from '@aws-cdk/aws-codebuild';
 import * as iam from '@aws-cdk/aws-iam';
 import buildSpec from './build-spec'
 
+
 export class InfrastructureStack extends cdk.Stack {
    name = 'next-js-with-ssr'
     constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -29,13 +30,9 @@ export class InfrastructureStack extends cdk.Stack {
         );
         amplifyApp.addBranch("main");
 
-        const role = new iam.Role(this, this.name, {
-            assumedBy: new iam.ServicePrincipal('amplify.amazonaws.com'),
-        });
-
-        role.addToPolicy(new iam.PolicyStatement({
+        amplifyApp.grantPrincipal.addToPrincipalPolicy(new iam.PolicyStatement({
             resources: ['*'],
             actions: ['*'],
-        }));
+        }))
     }
 }
