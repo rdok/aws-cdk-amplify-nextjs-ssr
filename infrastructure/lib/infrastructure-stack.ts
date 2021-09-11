@@ -28,5 +28,14 @@ export class InfrastructureStack extends cdk.Stack {
             }
         );
         amplifyApp.addBranch("main");
+
+        const role = new iam.Role(this, this.name, {
+            assumedBy: new iam.ServicePrincipal('amplify.amazonaws.com'),
+        });
+
+        role.addToPolicy(new iam.PolicyStatement({
+            resources: ['*'],
+            actions: ['*'],
+        }));
     }
 }
