@@ -3,6 +3,7 @@ import * as codecommit from "@aws-cdk/aws-codecommit";
 import * as amplify from "@aws-cdk/aws-amplify";
 
 export class InfrastructureStack extends cdk.Stack {
+   name = 'next-js-with-ssr'
     constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
         super(scope, id, props);
 
@@ -10,14 +11,14 @@ export class InfrastructureStack extends cdk.Stack {
             this,
             "NextJSwithSSR",
             {
-                repositoryName: "next-js-with-ssr",
+                repositoryName: this.name,
                 description: "Next.js with SSR page",
             }
         );
 
         const amplifyApp = new amplify.App(
             this,
-            "next-js-with-ssr",
+            this.name,
             {sourceCodeProvider: new amplify.CodeCommitSourceCodeProvider({repository: repository}),}
         );
         amplifyApp.addBranch("main");
