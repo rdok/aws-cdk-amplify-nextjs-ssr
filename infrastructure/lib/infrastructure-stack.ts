@@ -25,7 +25,7 @@ export class InfrastructureStack extends cdk.Stack {
             this.name,
             {
                 sourceCodeProvider: new amplify.CodeCommitSourceCodeProvider({repository: repository}),
-                buildSpec: codebuild.BuildSpec.fromObjectToYaml(buildSpec)
+                buildSpec: codebuild.BuildSpec.fromObjectToYaml(buildSpec),
             }
         );
         amplifyApp.addBranch("main");
