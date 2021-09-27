@@ -9,3 +9,6 @@ git push codecommit main
 
 ### Test
 Visit Amplify console to get the link
+
+### Dependents
+- https://stackoverflow.com/a/69146258/2790481
